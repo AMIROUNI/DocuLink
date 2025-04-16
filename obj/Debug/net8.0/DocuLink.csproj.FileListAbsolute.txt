@@ -163,3 +163,4 @@ C:\Users\Amir\Desktop\dotnet\DocuLink\DocuLink\obj\Debug\net8.0\refint\DocuLink.
 C:\Users\Amir\Desktop\dotnet\DocuLink\DocuLink\obj\Debug\net8.0\DocuLink.pdb
 C:\Users\Amir\Desktop\dotnet\DocuLink\DocuLink\obj\Debug\net8.0\DocuLink.genruntimeconfig.cache
 C:\Users\Amir\Desktop\dotnet\DocuLink\DocuLink\obj\Debug\net8.0\ref\DocuLink.dll
+C:\Users\Amir\Desktop\dotnet\DocuLink\DocuLink\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,8 +1,124 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<!-- Views/Home/Index.cshtml -->
+@model DocuLink.Models.ViewModels.LandingPageViewModel
+
+@{
+    ViewData["Title"] = "Welcome to DocuLink";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Hero Section -->
+<section style="margin-top=10em" id="hero" class="bg-primary text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Welcome to DocuLink</h1>
+        <p class="lead mb-4">Your trusted platform for seamless medical appointments and care management.</p>
+        <a class="btn btn-light btn-lg mx-2" asp-controller="Account" asp-action="Register">Get Started</a>
+        <a class="btn btn-outline-light btn-lg mx-2" asp-controller="Appointments" asp-action="Index">Book Now</a>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <i class="bi bi-calendar-check display-4 text-primary mb-3"></i>
+                <h3>Appointment Booking</h3>
+                <p>Schedule appointments with top doctors effortlessly, anytime, anywhere.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <i class="bi bi-person-badge display-4 text-primary mb-3"></i>
+                <h3>Find Doctors</h3>
+                <p>Connect with specialists based on expertise, location, and availability.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <i class="bi bi-capsule display-4 text-primary mb-3"></i>
+                <h3>Medication Management</h3>
+                <p>Track prescriptions, side effects, and reviews for informed care.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>About DocuLink</h2>
+                <p class="lead">DocuLink is designed to simplify healthcare access. Our platform empowers patients and doctors with tools for efficient appointment scheduling, consultation management, and medication tracking.</p>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="About">Learn More</a>
+            </div>
+            <div class="col-md-6">
+                <img src="~/images/about-illustration.jpg" alt="About DocuLink" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Users Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="~/images/user1.jpg" alt="User" class="rounded-circle mb-3" style="width: 80px; height: 80px;">
+                        <p class="card-text">"DocuLink made booking my appointments so easy! I love the reminders and doctor profiles."</p>
+                        <h5 class="card-title">Sarah M.</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="~/images/user2.jpg" alt="User" class="rounded-circle mb-3" style="width: 80px; height: 80px;">
+                        <p class="card-text">"As a doctor, managing my schedule is effortless with DocuLink."</p>
+                        <h5 class="card-title">Dr. Ahmed K.</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="~/images/user3.jpg" alt="User" class="rounded-circle mb-3" style="width: 80px; height: 80px;">
+                        <p class="card-text">"The medication tracker helped me stay on top of my prescriptions."</p>
+                        <h5 class="card-title">Lina T.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Get in Touch</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form asp-action="Contact" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h4>Contact Information</h4>
+                <p><i class="bi bi-envelope me-2"></i> support@doculink.com</p>
+                <p><i class="bi bi-telephone me-2"></i> +216 123 456 789</p>
+                <p><i class="bi bi-geo-alt me-2"></i> Tunis, Tunisia</p>
+            </div>
+        </div>
+    </div>
+</section>

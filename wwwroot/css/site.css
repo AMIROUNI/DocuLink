@@ -11,6 +11,9 @@ html {
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
+header{
+    margin-bottom:10em;
+}
 
 html {
   position: relative;
@@ -19,4 +22,166 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+/* wwwroot/css/site.css */
+
+/* Navbar Customization */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+}
+
+    .navbar-brand i {
+        font-size: 1.3rem;
+    }
+
+.nav-link {
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+    color: #fff !important;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-link i {
+        margin-right: 0.4rem;
+    }
+
+/* Active Link */
+.nav-item.active .nav-link {
+    background-color: rgba(255, 255, 255, 0.25);
+    font-weight: 600;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding: 1rem 0;
+    }
+
+    .nav-link {
+        margin: 0.5rem 0;
+        padding: 0.5rem 1.5rem;
+    }
+}
+
+/* Accessibility Enhancements */
+.nav-link:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+
+
+
+/* wwwroot/css/site.css */
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(180deg, #0d6efd, #0a58ca);
+    padding: 5rem 0;
+}
+
+    #hero h1 {
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+
+    #hero .btn-lg {
+        padding: 0.75rem 2rem;
+        font-weight: 500;
+    }
+
+/* Services Section */
+#services {
+    background-color: #f8f9fa;
+}
+
+    #services h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #services i {
+        transition: transform 0.3s;
+    }
+
+    #services .col-md-4:hover i {
+        transform: scale(1.1);
+    }
+
+/* About Section */
+#about img {
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials Section */
+#testimonials .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+    #testimonials .card:hover {
+        transform: translateY(-5px);
+    }
+
+#testimonials img {
+    object-fit: cover;
+}
+
+/* Contact Section */
+#contact .form-control {
+    border-radius: 0.25rem;
+    box-shadow: none;
+}
+
+    #contact .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+
+#contact h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact p {
+    font-size: 1.1rem;
+}
+
+/* Accessibility */
+:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767.98px) {
+    #hero {
+        padding: 3rem 0;
+    }
+
+        #hero h1 {
+            font-size: 2.5rem;
+        }
+
+    #about img {
+        margin-top: 2rem;
+    }
 }
