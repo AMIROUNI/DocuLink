@@ -1,0 +1,48 @@
+﻿@model DocuLink.Models.Doctor
+
+@{
+    ViewData["Title"] = "Inscription Médecin";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h2>Inscription</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="Register">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Nom complet" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" type="password" placeholder="Mot de passe" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Specialty" class="form-label"></label>
+                        <input asp-for="Specialty" class="form-control" placeholder="Spécialité" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Location" class="form-label"></label>
+                        <input asp-for="Location" class="form-control" />
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-success" type="submit">S'inscrire</button>
+                        <a asp-action="Login" class="btn btn-outline-secondary ms-2">Déjà inscrit ? Connexion</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

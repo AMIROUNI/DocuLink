@@ -1,3 +1,4 @@
+using DocuLink.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,21 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Register the IAppointmentService with the DI container
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+
 // Configure DbContext with dynamic database provider (SQL Server or SQLite)
 var useSqlite = builder.Configuration.GetValue<bool>("UseSqlite");
 
-if (useSqlite)
-{
-    // Configure SQLite
-    builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
-}
-else
-{
     // Configure SQL Server
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
-}
 
 var app = builder.Build();
 
@@ -37,6 +32,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Default route mapping
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

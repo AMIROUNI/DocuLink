@@ -16,7 +16,7 @@ namespace DocuLink.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -66,9 +66,8 @@ namespace DocuLink.Migrations
                     b.Property<int>("AppointmentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Diagnosis")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Notes")
                         .IsRequired()
@@ -90,11 +89,19 @@ namespace DocuLink.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -246,8 +253,7 @@ namespace DocuLink.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConsultationId")
-                        .IsUnique();
+                    b.HasIndex("ConsultationId");
 
                     b.ToTable("Prescriptions");
                 });
@@ -320,15 +326,12 @@ namespace DocuLink.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -410,8 +413,8 @@ namespace DocuLink.Migrations
             modelBuilder.Entity("DocuLink.Models.Prescription", b =>
                 {
                     b.HasOne("DocuLink.Models.Consultation", "Consultation")
-                        .WithOne("Prescription")
-                        .HasForeignKey("DocuLink.Models.Prescription", "ConsultationId")
+                        .WithMany()
+                        .HasForeignKey("ConsultationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -454,12 +457,6 @@ namespace DocuLink.Migrations
                         .IsRequired();
 
                     b.Navigation("Payment")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DocuLink.Models.Consultation", b =>
-                {
-                    b.Navigation("Prescription")
                         .IsRequired();
                 });
 
