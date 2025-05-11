@@ -1,4 +1,8 @@
+wwwroot\css\login.css
+wwwroot\css\register.css
 wwwroot\css\site.css
+wwwroot\diplomas\b75fa996-6c15-4b50-af57-eefa968c28fd_9.jpg
+wwwroot\diplomas\f5da23f5-5683-43f4-a72f-085b4ee0c1d8_8.jpg
 wwwroot\favicon.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

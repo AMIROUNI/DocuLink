@@ -1,44 +1,32 @@
-using System.Diagnostics;
+﻿using DocuLink.Models;
 using Microsoft.AspNetCore.Mvc;
-using DocuLink.Models;
-using DocuLink.Models.ViewModels;
+using System.Diagnostics;
 
-namespace DocuLink.Controllers;
-
-public class HomeController : Controller
+namespace DocuLink.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly ILogger<HomeController> _logger;
 
-    public IActionResult Index()
-    {
-        return View(new LandingPageViewModel());
-    }
-
-    [HttpPost]
-    public IActionResult Contact(LandingPageViewModel model)
-    {
-        if (ModelState.IsValid)
+        public HomeController(ILogger<HomeController> logger)
         {
-            // Handle form submission (e.g., send email, save to DB)
-            TempData["SuccessMessage"] = "Thank you for your message! We'll get back to you soon.";
-            return RedirectToAction("Index");
+            _logger = logger;
         }
-        return View("Index", model);
-    }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

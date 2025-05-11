@@ -1,0 +1,123 @@
+﻿@model DocuLink.Models.ViewModels.UserEditViewModel
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Edit User</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NewPassword" class="control-label"></label>
+                        <input asp-for="NewPassword" class="form-control" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                   
+
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Role</label>
+                        <select name="role" class="form-control" asp-items="ViewBag.Roles">
+                            <option value="">-- Select Role --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" asp-for="IsDoctor" class="form-check-input" id="isDoctorCheckbox" />
+                <label asp-for="IsDoctor" class="form-check-label"></label>
+            </div>
+
+            <div id="doctorFields" style="display: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Specialty" class="control-label"></label>
+                            <input asp-for="Specialty" class="form-control" />
+                            <span asp-validation-for="Specialty" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Location" class="control-label"></label>
+                            <input asp-for="Location" class="form-control" />
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DiplomaFile" class="control-label"></label>
+                    <input type="file" asp-for="DiplomaFile" class="form-control-file" />
+                    <span asp-validation-for="DiplomaFile" class="text-danger"></span>
+                    <small class="text-muted">Accepted formats: PDF, JPG, PNG (max 5MB)</small>
+
+                    @if (!string.IsNullOrEmpty(Model.DiplomaFilePath))
+                    {
+                        <div class="mt-2">
+                            <span>Current file: </span>
+                            <a href="@Model.DiplomaFilePath" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-file-alt"></i> View Diploma
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function() {
+            $('#isDoctorCheckbox').change(function() {
+                if(this.checked) {
+                    $('#doctorFields').show();
+                } else {
+                    $('#doctorFields').hide();
+                }
+            }).trigger('change');
+        });
+    </script>
+}

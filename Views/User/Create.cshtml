@@ -1,49 +1,77 @@
-﻿@model DocuLink.Models.User
+﻿@model DocuLink.Models.ViewModels.UserCreateViewModel
 
-@{
-    ViewData["Title"] = "Ajouter un Utilisateur";
+<h2>Create User</h2>
+
+@if (ViewBag.PasswordError != null)
+{
+    <div class="alert alert-danger">@ViewBag.PasswordError</div>
 }
 
-<div class="container mt-5">
-    <div class="card shadow">
-        <div class="card-header bg-success text-white">
-            <h2 class="mb-0">
-                <i class="fas fa-user-plus me-2"></i>@ViewData["Title"]
-            </h2>
-        </div>
-        <div class="card-body">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label asp-for="Name" class="form-label"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Nom complet" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="Phone" class="form-label"></label>
-                        <input asp-for="Phone" class="form-control" placeholder="Téléphone" />
-                        <span asp-validation-for="Phone" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label asp-for="Email" class="form-label"></label>
-                        <input asp-for="Email" class="form-control" placeholder="exemple@email.com" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-12 mt-4">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-save me-2"></i>Enregistrer
-                        </button>
-                        <a asp-action="Index" class="btn btn-outline-secondary ms-2">
-                            <i class="fas fa-arrow-left me-2"></i>Retour
-                        </a>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-</div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone"></label>
+        <input type="number" asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsDoctor"></label>
+        <input asp-for="IsDoctor" type="checkbox" />
+        <span asp-validation-for="IsDoctor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" id="specialtyGroup" style="display: @(Model.IsDoctor ? "block" : "none");">
+        <label asp-for="Specialty"></label>
+        <input asp-for="Specialty" class="form-control" />
+        <span asp-validation-for="Specialty" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" id="locationGroup" style="display: @(Model.IsDoctor ? "block" : "none");">
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" id="diplomaFileGroup" style="display: @(Model.IsDoctor ? "block" : "none");">
+        <label asp-for="DiplomaFile"></label>
+        <input asp-for="DiplomaFile" type="file" class="form-control" accept=".pdf" />
+        <span asp-validation-for="DiplomaFile" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $("#IsDoctor").change(function () {
+                if ($(this).is(":checked")) {
+                    $("#specialtyGroup, #locationGroup, #diplomaFileGroup").show();
+                } else {
+                    $("#specialtyGroup, #locationGroup, #diplomaFileGroup").hide();
+                }
+            });
+        });
+    </script>
+}

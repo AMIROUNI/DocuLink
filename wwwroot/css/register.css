@@ -1,0 +1,538 @@
+﻿/* Sakura Theme Register Page - Using Specified Color Variables */
+
+/* Color Variables */
+:root {
+    --sakura-white: #ffffff;
+    --sakura-pink: #f8b8c6;
+    --sakura-light-pink: #fce4ec;
+    --sakura-dark-pink: #e91e63;
+    --sakura-gray: #e0e0e0;
+    --sakura-dark-gray: #757575;
+    --sakura-shadow: rgba(248, 184, 198, 0.3);
+    --sakura-gradient: linear-gradient(135deg, #fce4ec, #f8b8c6);
+}
+
+/* Base Styles */
+body {
+    background-color: var(--sakura-light-pink);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23f8b8c6" opacity="0.2" d="M50 20c-5 0-10 5-10 10s5 10 10 10 10-5 10-10-5-10-10-10zm0 5c3 0 5 2 5 5s-2 5-5 5-5-2-5-5 2-5 5-5z"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path fill="%23e91e63" opacity="0.1" d="M75 30c-8 0-15 7-15 15s7 15 15 15 15-7 15-15-7-15-15-15zm0 8c4 0 7 3 7 7s-3 7-7 7-7-3-7-7 3-7 7-7z"/></svg>');
+    background-size: 100px 100px, 150px 150px;
+    background-position: 20% 30%, 80% 70%;
+    background-repeat: no-repeat;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--sakura-dark-gray);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Register Page Container */
+.row {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px var(--sakura-shadow);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+    .row::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e91e63" opacity="0.2" d="M50 0c13 0 25 5 34 14 9 9 14 21 14 34s-5 25-14 34c-9 9-21 14-34 14s-25-5-34-14c-9-9-14-21-14-34s5-25 14-34c9-9 21-14 34-14zm0 10c-11 0-21 4-29 12-8 8-12 18-12 29s4 21 12 29c8 8 18 12 29 12s21-4 29-12c8-8 12-18 12-29s-4-21-12-29c-8-8-18-12-29-12z"/></svg>');
+        background-size: contain;
+        z-index: 0;
+    }
+
+    .row::after {
+        content: "";
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 150px;
+        height: 150px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23f8b8c6" opacity="0.15" d="M50 10c22 0 40 18 40 40s-18 40-40 40-40-18-40-40 18-40 40-40zm0 10c-17 0-30 13-30 30s13 30 30 30 30-13 30-30-13-30-30-30z"/></svg>');
+        background-size: contain;
+        z-index: 0;
+    }
+
+/* Header Styles */
+h1 {
+    color: var(--sakura-dark-pink);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: var(--sakura-dark-pink);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Form Styles */
+#registerForm, #external-account {
+    background-color: var(--sakura-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--sakura-shadow);
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--sakura-gray);
+}
+
+.form-floating {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    background-color: var(--sakura-white);
+    border: 1px solid var(--sakura-gray);
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+    .form-control:focus {
+        border-color: var(--sakura-pink);
+        box-shadow: 0 0 0 0.25rem rgba(248, 184, 198, 0.25);
+        outline: none;
+    }
+
+.form-label {
+    color: var(--sakura-dark-gray);
+    transition: all 0.3s ease;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--sakura-dark-pink);
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+/* File Input Styles */
+input[type="file"].form-control {
+    padding: 0.5rem;
+    border: 1px solid var(--sakura-gray);
+    border-radius: 10px;
+    background-color: var(--sakura-white);
+}
+
+    input[type="file"].form-control:focus {
+        border-color: var(--sakura-pink);
+        box-shadow: 0 0 0 0.25rem rgba(248, 184, 198, 0.25);
+    }
+
+/* Checkbox Styles */
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5rem;
+    border: 2px solid var(--sakura-gray);
+    border-radius: 4px;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+}
+
+    .form-check-input:checked {
+        background-color: var(--sakura-dark-pink);
+        border-color: var(--sakura-dark-pink);
+    }
+
+        .form-check-input:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 0.8em;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+.form-check-label {
+    color: var(--sakura-dark-gray);
+    cursor: pointer;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--sakura-gradient);
+    color: var(--sakura-white);
+    box-shadow: 0 4px 6px var(--sakura-shadow);
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #f8b8c6, #e91e63);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px var(--sakura-shadow);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px var(--sakura-shadow);
+    }
+
+/* Link Styles */
+a {
+    color: var(--sakura-dark-pink);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+    a:hover {
+        color: var(--sakura-pink);
+    }
+
+    a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--sakura-dark-pink);
+        transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+        width: 100%;
+    }
+
+/* Divider Styles */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(248, 184, 198, 0), var(--sakura-pink), rgba(248, 184, 198, 0));
+    margin: 1.5rem 0;
+}
+
+/* External Login Buttons */
+#external-account .btn {
+    margin: 0.5rem;
+    background-color: var(--sakura-white);
+    color: var(--sakura-dark-pink);
+    border: 1px solid var(--sakura-gray);
+}
+
+    #external-account .btn:hover {
+        background-color: var(--sakura-light-pink);
+        border-color: var(--sakura-pink);
+    }
+
+/* Responsive Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-4,
+.col-md-6,
+.col-md-offset-2 {
+    padding: 0 15px;
+    position: relative;
+    min-height: 1px;
+}
+
+.col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.col-md-offset-2 {
+    margin-left: 16.666667%;
+}
+
+/* Validation Styles */
+.text-danger {
+    color: var(--sakura-dark-pink);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.validation-summary-errors {
+    color: var(--sakura-dark-pink);
+    background-color: var(--sakura-light-pink);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--sakura-dark-pink);
+}
+
+/* Animation Effects */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+h1 {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Sakura Petal Decoration */
+.sakura-petal {
+    position: absolute;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23f8b8c6" d="M10 0c2 0 4 1 5 3 1 2 1 4 0 6-1 2-3 3-5 3s-4-1-5-3c-1-2-1-4 0-6 1-2 3-3 5-3z"/></svg>');
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    z-index: 0;
+    animation: falling linear infinite;
+}
+
+@keyframes falling {
+    0% {
+        transform: translate(0, -10vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(10vw, 100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Create multiple petals */
+.petal-1 {
+    left: 5%;
+    top: -5%;
+    animation-duration: 15s;
+    animation-delay: 0s;
+}
+
+.petal-2 {
+    left: 15%;
+    top: -10%;
+    animation-duration: 18s;
+    animation-delay: 2s;
+}
+
+.petal-3 {
+    left: 25%;
+    top: -5%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.petal-4 {
+    left: 35%;
+    top: -8%;
+    animation-duration: 16s;
+    animation-delay: 3s;
+}
+
+.petal-5 {
+    left: 45%;
+    top: -10%;
+    animation-duration: 14s;
+    animation-delay: 0.5s;
+}
+
+.petal-6 {
+    left: 55%;
+    top: -5%;
+    animation-duration: 17s;
+    animation-delay: 2.5s;
+}
+
+.petal-7 {
+    left: 65%;
+    top: -8%;
+    animation-duration: 13s;
+    animation-delay: 1.5s;
+}
+
+.petal-8 {
+    left: 75%;
+    top: -10%;
+    animation-duration: 19s;
+    animation-delay: 0.8s;
+}
+
+.petal-9 {
+    left: 85%;
+    top: -5%;
+    animation-duration: 11s;
+    animation-delay: 3.5s;
+}
+
+.petal-10 {
+    left: 95%;
+    top: -8%;
+    animation-duration: 20s;
+    animation-delay: 1.2s;
+}
+
+/* Doctor Fields Specific Styles */
+#doctorFields {
+    background-color: var(--sakura-light-pink);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--sakura-gray);
+    transition: all 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .col-md-4,
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 0;
+    }
+
+    .row {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+        .row::before,
+        .row::after {
+            display: none;
+        }
+}
+
+/* Accessibility Focus Styles */
+:focus-visible {
+    outline: 3px solid var(--sakura-dark-pink);
+    outline-offset: 2px;
+}
+
+/* Loading State */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+    .btn-loading::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin: -10px 0 0 -10px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Footer Note */
+.register-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--sakura-dark-gray);
+    font-size: 0.9rem;
+}
+
+/* Special Effects for Checkbox */
+.form-check label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+    .form-check label:hover {
+        background-color: var(--sakura-light-pink);
+    }
+
+/* Password Toggle Feature (for future enhancement) */
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--sakura-dark-gray);
+    cursor: pointer;
+}
+
+    .password-toggle:hover {
+        color: var(--sakura-dark-pink);
+    }
+
+/* Success Message */
+.alert-success {
+    background-color: var(--sakura-light-pink);
+    border-left: 4px solid var(--sakura-dark-pink);
+    color: var(--sakura-dark-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}

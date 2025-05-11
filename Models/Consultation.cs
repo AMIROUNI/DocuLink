@@ -2,12 +2,11 @@
 {
     public class Consultation
     {
-        public int Id { get; set; } // Clé primaire ajoutée
+        public int Id { get; set; }
         public string Notes { get; set; }
         public DateTime Date { get; set; }
 
-        // Relation avec Appointment
-        public int AppointmentId { get; set; } // Clé étrangère
+        public int AppointmentId { get; set; }
         public Appointment Appointment { get; set; }
     }
 }
